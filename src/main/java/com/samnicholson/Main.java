@@ -8,7 +8,11 @@ import java.util.List;
 public class Main {
 
 	private static double APPLE_PRICE = 0.60;
+	private static double APPLE_DISCOUNT = 0.5;
+	private static int APPLE_MULITPLE = 2;
 	private static double ORANGE_PRICE = 0.25;
+	private static double ORANGE_DISCOUNT = 0.666;
+	private static int ORANGE_MULITPLE = 3;
 	
 	public static void main(String[] args) {
 		
@@ -39,7 +43,7 @@ public class Main {
 			}
 			
 			//calculate the cost
-			double total_cost = (apples*APPLE_PRICE) + (oranges*ORANGE_PRICE);
+			double total_cost = calculate(apples, "apple") + calculate(oranges, "orange");
 			
 			DecimalFormat twoDP = new DecimalFormat("0.00");
 			
@@ -49,6 +53,34 @@ public class Main {
 			System.out.println("Your shopping cart is empty.");
 		}
 		
+	}
+	
+	private static double calculate(int total, String fruit) {
+		
+		int difference = total % 3;
+		int eligibleForOffer = 0;
+		int multiple = 0;
+		double amountOwed = 0.00;
+		double cost = 0.00;
+		double discount = 0.0;
+		
+		if( fruit.equalsIgnoreCase("apple") ) {
+			multiple = APPLE_MULITPLE;
+			cost = APPLE_PRICE;
+			discount = APPLE_DISCOUNT;
+		} else {
+			multiple = ORANGE_MULITPLE;
+			cost = ORANGE_PRICE;
+			discount = ORANGE_DISCOUNT;
+		}
+		
+		difference = total % multiple;
+		
+		eligibleForOffer = total - difference;
+		
+		amountOwed = ((eligibleForOffer * discount) + difference) * cost;
+		
+		return amountOwed;
 	}
 
 }

@@ -14,6 +14,10 @@ public class MainTest {
 
 	private static String[] GIVEN_EXAMPLE_ONE = new String[] {"Apple","Apple","Orange","Apple"};
 	private static String[] GIVEN_EXAMPLE_TWO = new String[] {"Apple,Apple,Orange,Apple"};
+	private static String[] APPLE_OFFER_ONE = new String[] {"Apple,Apple,Apple"};
+	private static String[] APPLE_OFFER_TWO = new String[] {"Apple,Apple,Apple,Apple"};
+	private static String[] ORANGE_OFFER_ONE = new String[] {"Orange, Orange, Orange, Orange"};
+	private static String[] ORANGE_OFFER_TWO = new String[] {"Orange, Orange, Orange"};
 	private static String[] EMPTY_ARRAY = new String[0];
 	private static String[] ONE_APPLE = new String[] {"Apple"};
 	private static String[] ONE_ORANGE = new String[] {"Orange"};
@@ -42,7 +46,7 @@ public class MainTest {
 		Main.main(MainTest.GIVEN_EXAMPLE_ONE);
 		
 		assertEquals("Incorrect outcome for the given example (1)", 
-					 "Total owed: £2.05",
+					 "Total owed: £1.45",
 					 outContent.toString().trim());
 
 	}
@@ -53,7 +57,51 @@ public class MainTest {
 		Main.main(MainTest.GIVEN_EXAMPLE_TWO);
 		
 		assertEquals("Incorrect outcome for the given example (2)", 
-					 "Total owed: £2.05",
+					 "Total owed: £1.45",
+					 outContent.toString().trim());
+
+	}
+	
+	@Test
+	public void test_AppleOffer1() {
+	
+		Main.main(MainTest.APPLE_OFFER_ONE);
+		
+		assertEquals("Incorrect outcome for the given example (2)", 
+					 "Total owed: £1.20",
+					 outContent.toString().trim());
+
+	}
+	
+	@Test
+	public void test_AppleOffer2() {
+	
+		Main.main(MainTest.APPLE_OFFER_TWO);
+		
+		assertEquals("Incorrect outcome for the given example (2)", 
+					 "Total owed: £1.20",
+					 outContent.toString().trim());
+
+	}
+	
+	@Test
+	public void test_OrangeOffer1() {
+	
+		Main.main(MainTest.ORANGE_OFFER_ONE);
+		
+		assertEquals("Incorrect outcome for the given example (2)", 
+					 "Total owed: £0.75",
+					 outContent.toString().trim());
+
+	}
+	
+	@Test
+	public void test_OrangeOffer2() {
+	
+		Main.main(MainTest.ORANGE_OFFER_TWO);
+		
+		assertEquals("Incorrect outcome for the given example (2)", 
+					 "Total owed: £0.50",
 					 outContent.toString().trim());
 
 	}
